@@ -218,3 +218,85 @@ document.querySelectorAll(".why-card").forEach((card) => {
     card.style.transform = "rotateX(0) rotateY(0) scale(1)";
   });
 });
+
+// ================== CONTACT ==================
+// **********************************************
+// 1. Efek Ripple pada Tombol
+// **********************************************
+window.showRippleEffect = function (event) {
+  const button = event.currentTarget;
+  const circle = document.createElement("span");
+  const diameter = Math.max(button.clientWidth, button.clientHeight);
+  const radius = diameter / 2;
+
+  // Mendapatkan posisi klik relatif terhadap tombol
+  const rect = button.getBoundingClientRect();
+  const x = event.clientX - rect.left - radius;
+  const y = event.clientY - rect.top - radius;
+
+  // Styling elemen ripple
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = `${x}px`;
+  circle.style.top = `${y}px`;
+  circle.classList.add("ripple");
+
+  // Hapus ripple lama jika ada dan tambahkan yang baru
+  const oldRipple = button.querySelector(".ripple");
+  if (oldRipple) {
+    oldRipple.remove();
+  }
+  button.appendChild(circle);
+};
+
+// **********************************************
+// 2. Efek Reveal (Scroll Animation)
+// **********************************************
+document.addEventListener("DOMContentLoaded", () => {
+  const revealElements = document.querySelectorAll("[data-reveal]");
+
+  const observerOptions = {
+    root: null, // viewport
+    rootMargin: "0px",
+    threshold: 0.1, // 10% elemen terlihat
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Ketika elemen masuk viewport
+        entry.target.classList.add("is-revealed");
+        // Hentikan pengamatan setelah di-reveal
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  revealElements.forEach((el) => {
+    observer.observe(el);
+  });
+
+  // PENTING: Tambahkan validasi sederhana untuk demo
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function (e) {
+    const requiredInputs = form.querySelectorAll(
+      "input[required], textarea[required]"
+    );
+    let allValid = true;
+
+    requiredInputs.forEach((input) => {
+      if (!input.value.trim()) {
+        allValid = false;
+        // Tambahkan kelas border merah saat kosong
+        input.classList.add("border-red-500", "animate-pulse");
+        setTimeout(() => {
+          input.classList.remove("border-red-500", "animate-pulse");
+        }, 1500);
+      }
+    });
+
+    if (!allValid) {
+      e.preventDefault();
+      alert("Harap lengkapi semua bidang!");
+    }
+  });
+});

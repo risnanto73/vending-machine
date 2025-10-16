@@ -410,6 +410,33 @@
         }
 
         /* END WHY CHOOSE VENDI GLOBAL */
+
+        /* CONTACT US */
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            /* Warna ripple putih semi-transparan */
+            animation: ripple-animation 0.6s linear;
+            transform: scale(0);
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Kelas animasi reveal (perubahan akhir) */
+        .is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* END CONTACT US */
     </style>
 
     <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-[85%]">
@@ -418,7 +445,7 @@
             <!-- <div class="text-2xl font-semibold">Vendii Global</div> -->
             <div class="flex items-center">
                 <a href="#">
-                    <img src="/image/vendii_logo.png" alt="Vendii Global Logo" class="h-11 w-h-11 object-contain" />    
+                    <img src="/image/vendii_logo.png" alt="Vendii Global Logo" class="h-11 w-h-11 object-contain" />
                 </a>
             </div>
 
@@ -803,7 +830,8 @@
     <!-- END HOW IT WORKS -->
 
     <!-- WHY VENDII -->
-    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-[#0f112f] via-[#14163A] to-[#0f112f]" id="why-vendii">
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-[#0f112f] via-[#14163A] to-[#0f112f]"
+        id="why-vendii">
         <!-- Ambient Glow Background -->
         <div class="absolute inset-0 pointer-events-none">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.1),transparent_70%)]">
@@ -871,10 +899,94 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- CONTACT -->
+    <section id="contact" class="relative bg-gradient-to-r from-[#14163A] to-[#2a2d61] px-6 py-24 overflow-hidden">
+        <!-- Background Particles -->
+        <div id="contact-particle-bg" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
+        <!-- Header Centered -->
+        <div class="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Get in <span class="text-blue-400">Touch</span>
+            </h2>
+            <p class="text-gray-300 text-lg">Interested in learning more about how Vendii can transform your fragrance
+                evaluation process? Reach out to us today!</p>
+        </div>
+
+        <!-- Grid 2 Kolom -->
+        <div class="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+            <!-- Kiri: Formulir -->
+            <div class="space-y-6 md:space-y-8">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-200 mb-1">Name</label>
+                        <input id="name" name="name" type="text" required
+                            class="w-full px-4 py-3 rounded-lg bg-[#1e2140] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-200 mb-1">Email</label>
+                        <input id="email" name="email" type="email" required
+                            class="w-full px-4 py-3 rounded-lg bg-[#1e2140] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-200 mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-3 rounded-lg bg-[#1e2140] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition transform hover:scale-105 duration-300 relative overflow-hidden"
+                        onclick="showRippleEffect(event)">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Kanan: Info Kontak + Statistik -->
+            <div class="space-y-10 bg-[#1e2140] p-6 rounded-lg shadow-lg border border-gray-700">
+                <!-- Info Kontak -->
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-white text-lg font-semibold">📧 Email</h3>
+                        <p class="text-gray-300">hello@vendii.co</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white text-lg font-semibold">📞 Call</h3>
+                        <p class="text-gray-300">+62 812-3456-7890</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white text-lg font-semibold">📍 Office</h3>
+                        <p class="text-gray-300">Jl. Mawar No. 123, Jakarta, Indonesia</p>
+                    </div>
+                </div>
+
+                <!-- Statistik Card -->
+                <div
+                    class="flex justify-between bg-[#14163A] border border-gray-700 rounded-xl p-6 text-center text-white">
+                    <div class="flex-1">
+                        <p class="text-2xl font-bold">24h</p>
+                        <p class="text-sm text-gray-400">Avg. Response</p>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-2xl font-bold">120+</p>
+                        <p class="text-sm text-gray-400">Clients</p>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-2xl font-bold">300+</p>
+                        <p class="text-sm text-gray-400">Projects Delivered</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- END CONTACT -->
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0B0C2E] text-gray-400 py-6 text-center text-sm">
+        &copy; 2024 Vendii Global. All rights reserved.
+    </footer>
     <!-- SCRIPT -->
     <script type="module" src="/script/main.js"></script>
+
 
 
 </body>
