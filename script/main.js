@@ -220,83 +220,62 @@ document.querySelectorAll(".why-card").forEach((card) => {
 });
 
 // ================== CONTACT ==================
-// **********************************************
-// 1. Efek Ripple pada Tombol
-// **********************************************
-window.showRippleEffect = function (event) {
-  const button = event.currentTarget;
-  const circle = document.createElement("span");
-  const diameter = Math.max(button.clientWidth, button.clientHeight);
-  const radius = diameter / 2;
-
-  // Mendapatkan posisi klik relatif terhadap tombol
-  const rect = button.getBoundingClientRect();
-  const x = event.clientX - rect.left - radius;
-  const y = event.clientY - rect.top - radius;
-
-  // Styling elemen ripple
-  circle.style.width = circle.style.height = `${diameter}px`;
-  circle.style.left = `${x}px`;
-  circle.style.top = `${y}px`;
-  circle.classList.add("ripple");
-
-  // Hapus ripple lama jika ada dan tambahkan yang baru
-  const oldRipple = button.querySelector(".ripple");
-  if (oldRipple) {
-    oldRipple.remove();
-  }
-  button.appendChild(circle);
-};
-
-// **********************************************
-// 2. Efek Reveal (Scroll Animation)
-// **********************************************
-document.addEventListener("DOMContentLoaded", () => {
-  const revealElements = document.querySelectorAll("[data-reveal]");
-
-  const observerOptions = {
-    root: null, // viewport
-    rootMargin: "0px",
-    threshold: 0.1, // 10% elemen terlihat
-  };
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Ketika elemen masuk viewport
-        entry.target.classList.add("is-revealed");
-        // Hentikan pengamatan setelah di-reveal
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  revealElements.forEach((el) => {
-    observer.observe(el);
-  });
-
-  // PENTING: Tambahkan validasi sederhana untuk demo
-  const form = document.querySelector("form");
-  form.addEventListener("submit", function (e) {
-    const requiredInputs = form.querySelectorAll(
-      "input[required], textarea[required]"
-    );
-    let allValid = true;
-
-    requiredInputs.forEach((input) => {
-      if (!input.value.trim()) {
-        allValid = false;
-        // Tambahkan kelas border merah saat kosong
-        input.classList.add("border-red-500", "animate-pulse");
-        setTimeout(() => {
-          input.classList.remove("border-red-500", "animate-pulse");
-        }, 1500);
-      }
-    });
-
-    if (!allValid) {
-      e.preventDefault();
-      alert("Harap lengkapi semua bidang!");
+// 🌟 Animasi Scroll Fade-in (Cinematic Sequence)
+const observerContact = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+      }, i * 150);
     }
   });
-});
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => observerContact.observe(el));
+
+// 💧 Ripple effect button
+function showRippleEffect(e) {
+  const btn = e.currentTarget;
+  const ripple = document.createElement('span');
+  const rect = btn.getBoundingClientRect();
+  ripple.style.left = `${e.clientX - rect.left}px`;
+  ripple.style.top = `${e.clientY - rect.top}px`;
+  ripple.classList.add('ripple');
+  btn.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 600);
+}
+
+// ✨ Particle ambient motion
+const canvas = document.getElementById('contact-particle-bg');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2,
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5,
+  });
+}
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'rgba(59,130,246,0.3)';
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
