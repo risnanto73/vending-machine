@@ -41,51 +41,421 @@
 
     <!-- Tailwind -->
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- <link href="/css/output.css" rel="stylesheet"> -->
-     <link rel="stylesheet" href="/public/build/output.css">
+    <link href="/css/output.css" rel="stylesheet">
 </head>
 
 <body class="bg-[#0b0d25] text-white font-sans">
     <!-- NAVBAR -->
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0b2e;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #60a5fa, #a78bfa);
+            box-shadow: 0 0 15px rgba(167, 139, 250, 0.8);
+        }
+
+        /* 🔮 Untuk Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #3b82f6 #0a0b2e;
+        }
+
+        @keyframes gentle-shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-3px);
+            }
+
+            50% {
+                transform: translateX(3px);
+            }
+
+            75% {
+                transform: translateX(-2px);
+            }
+        }
+
+        .animate-gentle-shake {
+            animation: gentle-shake 0.6s ease-in-out;
+        }
+
+        /* biar tidak goyang terus, hanya sesekali */
+        .shake-on-hover:hover {
+            animation: gentle-shake 0.6s ease-in-out;
+        }
+
+        /* kalau mau otomatis berulang pelan */
+        .shake-slow {
+            animation: gentle-shake 1.5s ease-in-out infinite;
+        }
+
+        /* PUNYA HERO */
+        /* 🌈 Spectrum Animations */
+        @keyframes spectrumBlue {
+            0% {
+                background: radial-gradient(circle, rgba(59, 130, 246, 0.6), transparent 70%);
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+
+            50% {
+                background: radial-gradient(circle at 60% 40%, rgba(59, 130, 246, 0.7), transparent 70%);
+                transform: translate(-50%, -50%) scale(1.15) rotate(30deg);
+            }
+
+            100% {
+                background: radial-gradient(circle, rgba(59, 130, 246, 0.6), transparent 70%);
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes spectrumPurple {
+            0% {
+                background: radial-gradient(circle, rgba(168, 85, 247, 0.5), transparent 70%);
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+
+            50% {
+                background: radial-gradient(circle at 40% 60%, rgba(147, 51, 234, 0.6), transparent 70%);
+                transform: translate(-50%, -50%) scale(1.2) rotate(-25deg);
+            }
+
+            100% {
+                background: radial-gradient(circle, rgba(168, 85, 247, 0.5), transparent 70%);
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes spectrumPink {
+            0% {
+                background: radial-gradient(circle, rgba(236, 72, 153, 0.4), transparent 70%);
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+
+            50% {
+                background: radial-gradient(circle at 55% 45%, rgba(244, 114, 182, 0.5), transparent 70%);
+                transform: translate(-50%, -50%) scale(1.25) rotate(20deg);
+            }
+
+            100% {
+                background: radial-gradient(circle, rgba(236, 72, 153, 0.4), transparent 70%);
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+        }
+
+        .animate-spectrum-blue {
+            animation: spectrumBlue 20s ease-in-out infinite alternate;
+        }
+
+        .animate-spectrum-purple {
+            animation: spectrumPurple 26s ease-in-out infinite alternate;
+        }
+
+        .animate-spectrum-pink {
+            animation: spectrumPink 32s ease-in-out infinite alternate;
+        }
+
+        /* ✨ Micro bounce */
+        @keyframes micro-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-2px);
+            }
+
+            60% {
+                transform: translateY(1px);
+            }
+        }
+
+        .hover\:animate-micro-bounce:hover {
+            animation: micro-bounce 0.45s ease-in-out;
+        }
+
+        /* 💨 Fade Up Animation */
+        .fade-up {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        /* END PUNYA HERO */
+
+        /* PUNYA BADGES */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 1s ease forwards;
+        }
+
+        @keyframes pulseSlow {
+
+            0%,
+            100% {
+                opacity: 0.25;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.45;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes pulseSlower {
+
+            0%,
+            100% {
+                opacity: 0.25;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(1.08);
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulseSlow 8s ease-in-out infinite;
+        }
+
+        .animate-pulse-slower {
+            animation: pulseSlower 10s ease-in-out infinite;
+        }
+
+        /* ENDE PUNYA BADGES */
+
+        /* ABOUT US */
+        /* 🌈 Animasi garis glow pulse */
+        @keyframes floatLine {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(99, 102, 241, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
+                opacity: 1;
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
+                opacity: 0.9;
+            }
+        }
+
+        .animated-line {
+            animation: floatLine 6s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
+        }
+
+        /* 🎬 Animasi fade-up saat muncul */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 1s ease forwards;
+        }
+
+        /* 💥 Efek hover naik + getar halus */
+        @keyframes hoverShake {
+
+            0%,
+            100% {
+                transform: translateY(-6px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-6px) rotate(1deg);
+            }
+
+            50% {
+                transform: translateY(-6px) rotate(-1deg);
+            }
+
+            75% {
+                transform: translateY(-6px) rotate(1deg);
+            }
+        }
+
+        .hover-animated:hover {
+            animation: hoverShake 0.4s ease-in-out;
+        }
+
+        /* END ABOUT US */
+
+        /* HOW IT WORKS */
+        /* === GLOW EFFECT === */
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                filter: blur(1px);
+            }
+
+            50% {
+                opacity: 1;
+                filter: blur(2px);
+            }
+        }
+
+        .animate-glow {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        /* === FADE + SLIDE REVEAL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === PARTICLE GLOW === */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
+            opacity: 0.1;
+            pointer-events: none;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.15;
+            }
+
+            50% {
+                opacity: 0.35;
+                transform: translateY(-20px) scale(1.2);
+            }
+
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.15;
+            }
+        }
+
+        /* END HOW IT WORKS */
+
+        /* WHY CHOOSE VENDI GLOBAL */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* END WHY CHOOSE VENDI GLOBAL */
+    </style>
+
     <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-[85%]">
         <div class="bg-[#14163A]/90 backdrop-blur-md rounded-2xl shadow-lg flex items-center justify-between px-6 py-4">
             <!-- Logo -->
-            <div class="text-2xl font-semibold">Vendii Global</div>
+            <!-- <div class="text-2xl font-semibold">Vendii Global</div> -->
+            <div class="flex items-center">
+                <a href="#">
+                    <!-- <img src="/image/vendii_logo.png" alt="Vendii Global Logo" class="h-11 w-h-11 object-contain" /> -->
+                    <span class="text-2xl font-semibold text-white">Vendii Global</span>
+                </a>
+            </div>
 
             <!-- Desktop Menu -->
             <ul class="hidden lg:flex items-center space-x-8">
                 <li>
-                    <a href="#"
+                    <a href="#about-us"
                         class="relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-100 after:origin-left text-blue-400 font-medium transition-all">
-                        About Us </a>
+                        About Us
+                    </a>
                 </li>
                 <li>
                     <a href="#how-it-works"
                         class="relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left transition-all duration-300">
-                        How It Works</a>
+                        How It Works
+                    </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="#why-vendii"
                         class="relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left transition-all duration-300">
-                        Why Vendii</a>
+                        Why Vendii
+                    </a>
                 </li>
             </ul>
 
             <!-- CTA Button -->
-            <a href="#"
-                class="hidden lg:inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition">
+            <a href="#trust-vendii"
+                class="hidden lg:inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition shake-slow">
                 GET IN TOUCH
             </a>
-
             <!-- Mobile/Tablet Menu Button -->
             <button id="menu-toggle" class="lg:hidden text-white focus:outline-none">
-                <!-- Menu Icon -->
                 <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                     stroke="currentColor" class="w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-
-                <!-- Close Icon -->
                 <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                     stroke="currentColor" class="w-7 h-7 hidden">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -93,64 +463,119 @@
             </button>
         </div>
 
-        <!-- Mobile/Tablet Dropdown -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu"
             class="hidden lg:hidden bg-[#14163A]/95 backdrop-blur-md mt-2 rounded-2xl shadow-lg p-6 space-y-4 text-center">
             <a href="#" class="block text-blue-400 font-medium">About Us</a>
             <a href="#how-it-works" class="block hover:text-blue-400 transition">How It Works</a>
             <a href="#" class="block hover:text-blue-400 transition">Why Vendii</a>
-            <a href="#"
+            <a href="#trust-vendii"
                 class="block bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition w-full">
-                HOW IT WORKS
+                GET IN TOUCH
             </a>
         </div>
     </nav>
+
     <!-- HERO SECTION -->
-    <section class="flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 pt-40">
-        <div class="md:w-1/2 space-y-6">
-            <p class="text-gray-300 text-lg leading-relaxed">UNCOVER TOMORROW'S WINNING FRAGRANCES, TODAY</p>
-            <h1 class="text-4xl md:text-6xl font-bold leading-tight">
-                Data & AI-driven fragrance evaluation<br />
-                <span class="text-blue-400 text-4xl">for modern perfumery</span>
-            </h1>
-            <p class="text-gray-300 text-lg leading-relaxed">
-                The fragrance evaluation platform that helps fragrance houses discover tomorrow’s winning creations,
-                today by combining structured consumer testing, digital feedback experiences, and AI-powered insights.
-            </p>
-            <div class="flex space-x-4 pt-4">
-                <a href="#"
-                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition">Get
-                    In Touch</a>
+    <section
+        class="relative flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 pt-36 pb-24 overflow-hidden">
+
+        <!-- 🌌 Background Futuristik -->
+        <div class="absolute inset-0 -z-20 bg-gradient-to-b from-[#0A0B2E] via-[#0F1042] to-[#05061C]"></div>
+
+        <!-- 💫 Layered Animated Gradients -->
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+            <div
+                class="absolute top-1/2 left-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full animate-spectrum-blue opacity-40 blur-[130px]">
+            </div>
+            <div
+                class="absolute top-1/3 left-2/3 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full animate-spectrum-purple opacity-35 blur-[140px]">
+            </div>
+            <div
+                class="absolute bottom-1/3 right-2/3 w-[700px] h-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full animate-spectrum-pink opacity-25 blur-[150px]">
             </div>
         </div>
 
-        <div class="md:w-1/2 mt-12 md:mt-0">
-            <img src="/image/bg-head.png" alt="Digital Brain" class="w-full max-w-lg mx-auto" />
+        <!-- ✨ Konten -->
+        <div class="md:w-1/2 relative z-10">
+            <p id="anim-1"
+                class="opacity-0 translate-y-4 text-blue-400 text-xs md:text-sm font-medium tracking-[0.15em] uppercase mb-1">
+                Uncover tomorrow's winning fragrances, today
+            </p>
+
+            <h1 id="anim-2"
+                class="opacity-0 translate-y-4 text-4xl md:text-6xl font-bold leading-tight text-white mb-2">
+                Data & AI-driven fragrance evaluation
+            </h1>
+
+            <h2 id="anim-3"
+                class="opacity-0 translate-y-4 text-blue-400 text-3xl md:text-5xl font-bold leading-tight mb-4">
+                for modern perfumery
+            </h2>
+
+            <p id="anim-4" class="opacity-0 translate-y-4 text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+                The fragrance evaluation platform that helps fragrance houses discover tomorrow’s winning creations,
+                today — combining structured consumer testing, digital feedback, and AI-powered insights.
+            </p>
+
+            <div id="anim-5" class="opacity-0 translate-y-4 flex space-x-4 pt-2 transition">
+                <a href="#trust-vendii"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition hover:animate-micro-bounce">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+
+        <!-- 🧠 Image -->
+        <div id="anim-6" class="md:w-1/2 mt-12 md:mt-0 relative z-10 opacity-0 translate-y-4">
+            <img src="/image/bg-head.png" alt="Digital Brain"
+                class="w-full max-w-lg mx-auto drop-shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-transform duration-700" />
         </div>
     </section>
 
-    <!-- SECTION LABS -->
-    <section class=" py-20">
+    <!-- SECTION LABS TRUST BADGES -->
+    <section class="relative py-24 overflow-hidden bg-[#0B0C2E]" id="trust-vendii">
+        <!-- 🌌 Parallax Background Layers -->
+        <div id="trust-parallax" class="absolute inset-0 -z-10 overflow-hidden">
+            <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full"></div>
+            <div class="absolute top-2/3 right-1/4 w-[600px] h-[600px] bg-purple-500/20 blur-[140px] rounded-full">
+            </div>
+            <div class="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] bg-pink-500/15 blur-[100px] rounded-full">
+            </div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">TRUST BADGES</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12 opacity-0 translate-y-6 transition-all duration-700"
+                data-reveal>
+                Trust the Power of <span class="text-blue-400">Vendii</span>
+            </h2>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Bias-Free Testing 🧪</h3>
-                    <p class="text-gray-300">
+                <!-- Card 1 -->
+                <div class="bg-[#1e2140] p-8 rounded-2xl shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] transition-all duration-500 transform hover:-translate-y-2 opacity-0 translate-y-6"
+                    data-reveal>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-400">Bias-Free Testing 🧪</h3>
+                    <p class="text-gray-300 leading-relaxed">
                         Our vending machines provide an unbiased platform for fragrance sampling, ensuring genuine
                         consumer feedback.
                     </p>
                 </div>
-                <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Impactful Data Reports 📊</h3>
-                    <p class="text-gray-300">
+
+                <!-- Card 2 -->
+                <div class="bg-[#1e2140] p-8 rounded-2xl shadow-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all duration-500 transform hover:-translate-y-2 opacity-0 translate-y-6"
+                    data-reveal>
+                    <h3 class="text-xl font-semibold mb-4 text-purple-400">Impactful Data Reports 📊</h3>
+                    <p class="text-gray-300 leading-relaxed">
                         Gain access to comprehensive data reports that help you understand consumer preferences and
                         trends.
                     </p>
                 </div>
-                <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Smarter Fragrance Evaluations 💡</h3>
-                    <p class="text-gray-300">
+
+                <!-- Card 3 -->
+                <div class="bg-[#1e2140] p-8 rounded-2xl shadow-lg hover:shadow-[0_0_30px_rgba(236,72,153,0.4)] transition-all duration-500 transform hover:-translate-y-2 opacity-0 translate-y-6"
+                    data-reveal>
+                    <h3 class="text-xl font-semibold mb-4 text-pink-400">Smarter Fragrance Evaluations 💡</h3>
+                    <p class="text-gray-300 leading-relaxed">
                         Leverage AI-driven insights to make informed decisions about your fragrance offerings and
                         strategies.
                     </p>
@@ -158,92 +583,289 @@
             </div>
         </div>
     </section>
+    <!-- END SECTION LABS TRUST BADGES -->
 
     <!-- ANSWER QUESTION -->
-    <section class="bg-[#14163A] max-w-7xl mx-auto px-6 py-20" id="how-it-works">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">From Guesswork to Clarity</h2>
-        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
-            <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">The Challenge ❌ </h3>
-                <p class="text-gray-300">Fragrance houses create dozens of trial blends, but decisions often rely on
-                    instinct or brand perception. Without structured consumer insight, it’s hard to know which creations
-                    will truly resonate</p>
+    <section class="relative bg-[#14163A] max-w-7xl mx-auto px-6 py-24 overflow-hidden">
+        <!-- 💫 Parallax Lights -->
+        <div id="qa-parallax" class="absolute inset-0 -z-10 overflow-hidden">
+            <div class="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-blue-500/20 blur-[100px] rounded-full"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/20 blur-[120px] rounded-full">
             </div>
-            <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">Our Answer ✅</h3>
-                <p class="text-gray-300">Vendii provides a clear, evidence-based way to evaluate fragrances — helping
-                    houses identify strengths, uncover weaknesses, and refine creations through structured testing and
-                    data science.</p>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16 opacity-0 translate-y-6 transition-all duration-700"
+            data-reveal>
+            From Guesswork to <span class="text-blue-400">Clarity</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
+            <!-- 🧩 Challenge Card -->
+            <div class="relative bg-[#1e2140] p-8 rounded-2xl shadow-lg transform transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] opacity-0 translate-y-6"
+                data-reveal>
+                <div
+                    class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-400 to-purple-500 rounded-l-2xl">
+                </div>
+                <h3 class="text-2xl font-semibold mb-4 text-blue-400">
+                    The Challenge 🧩
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Fragrance houses create dozens of trial blends, but decisions often rely on instinct or brand
+                    perception.
+                    Without structured consumer insight, it’s hard to know which creations will truly resonate.
+                </p>
+                <!-- <div class="absolute -bottom-4 right-6 text-sm text-gray-400 italic animate-pulse">
+                    “But what if data could decide?”
+                </div> -->
+            </div>
+
+            <!-- 💡 Answer Card -->
+            <div class="relative bg-[#1e2140] p-8 rounded-2xl shadow-lg transform transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] opacity-0 translate-y-6 delay-[300ms]"
+                data-reveal>
+                <div
+                    class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-purple-500 to-pink-400 rounded-l-2xl">
+                </div>
+                <h3 class="text-2xl font-semibold mb-4 text-purple-400">
+                    Our Answer 💡
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Vendii provides a clear, evidence-based way to evaluate fragrances — helping houses identify
+                    strengths, uncover
+                    weaknesses, and refine creations through structured testing and data science.
+                </p>
+                <!-- <div class="absolute -bottom-4 right-6 text-sm text-gray-400 italic animate-pulse">
+                    “That’s where Vendii steps in.”
+                </div> -->
             </div>
         </div>
     </section>
-
 
     <!-- ABOUT US -->
-    <section class=" max-w-7xl mx-auto px-6 py-20" id="how-it-works">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">ABOUT US</h2>
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
-                <p class="text-gray-300">Vendii is a fragrance technology company bridging the gap between perfumery
-                    creativity and consumer insight. We combine data science and AI with immersive sampling to help
-                    fragrance houses and brands bring their best creations to market.</p>
+    <section id="about-us"
+        class="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-gray-100 py-24 px-6 md:px-12">
+        <!-- Radial Highlight -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.1),transparent_60%)]">
+        </div>
+
+        <div class="relative max-w-6xl mx-auto text-center">
+            <h2
+                class="text-4xl md:text-5xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400">
+                About <span class="text-white">Vendii</span>
+            </h2>
+
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                <span class="font-semibold text-indigo-300">Vendii</span> is a fragrance
+                technology company bridging the gap between perfumery creativity and
+                consumer insight. We combine
+                <span class="text-pink-300 font-medium">data science</span>,
+                <span class="text-indigo-300 font-medium">AI</span>, and
+                <span class="text-pink-300 font-medium">immersive sampling</span> to help
+                fragrance houses and brands bring their best creations to market.
+            </p>
+
+            <!-- Feature cards -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div
+                    class="card relative p-6 pl-8 rounded-2xl bg-slate-800/40 backdrop-blur-md hover:bg-slate-800/70 transition group overflow-hidden opacity-0">
+                    <span
+                        class="animated-line absolute left-0 top-0 h-full w-1 rounded-l-2xl bg-gradient-to-b from-indigo-400 to-cyan-400 transition-all duration-500 group-hover:from-indigo-300 group-hover:to-cyan-300"></span>
+
+                    <h3 class="text-xl font-semibold text-indigo-400 mb-3">
+                        AI-Powered Insight
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        Leveraging machine learning to decode scent preferences and optimize
+                        fragrance decisions with confidence.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="card relative p-6 pl-8 rounded-2xl bg-slate-800/40 backdrop-blur-md hover:bg-slate-800/70 transition group overflow-hidden opacity-0">
+                    <span
+                        class="animated-line absolute left-0 top-0 h-full w-1 rounded-l-2xl bg-gradient-to-b from-pink-400 to-rose-400 transition-all duration-500 group-hover:from-pink-300 group-hover:to-rose-300"></span>
+
+                    <h3 class="text-xl font-semibold text-pink-400 mb-3">
+                        Creative Collaboration
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        Blending data-driven insights with artistic innovation to support
+                        perfumers in every creative stage.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="card relative p-6 pl-8 rounded-2xl bg-slate-800/40 backdrop-blur-md hover:bg-slate-800/70 transition group overflow-hidden opacity-0">
+                    <span
+                        class="animated-line absolute left-0 top-0 h-full w-1 rounded-l-2xl bg-gradient-to-b from-cyan-400 to-indigo-400 transition-all duration-500 group-hover:from-cyan-300 group-hover:to-indigo-300"></span>
+
+                    <h3 class="text-xl font-semibold text-indigo-400 mb-3">
+                        Scent Experience
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        Delivering personalized, immersive scent sampling that connects brands
+                        with what people truly love.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
+    <!-- END ABOUT US -->
 
     <!-- HOW IT WORKS -->
-    <section class="bg-[#14163A] max-w-7xl mx-auto px-6 py-20" id="how-it-works">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">HOW IT WORKS!</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">Step 1: Construct </h3>
-                <p class="text-gray-300">Create an account to access our platform and start your fragrance journey.</p>
-            </div>
-            <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">Step 2: Collect </h3>
-                <p class="text-gray-300">Easily upload your fragrance samples and details to our secure platform.</p>
-            </div>
-            <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">Step 3: Capture </h3>
-                <p class="text-gray-300">Utilize our AI-powered tools to gain insights and make informed decisions.</p>
-            </div>
-            <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">Step 4: Reveal </h3>
-                <p class="text-gray-300">Discover trends and preferences with our comprehensive analytics dashboard.</p>
-            </div>
-            <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">Step 5: Report </h3>
-                <p class="text-gray-300">Leverage our AI-driven insights to refine your fragrance offerings.</p>
-            </div>
-        </div>
-    </section>
+    <section class="relative bg-[#14163A] max-w-7xl mx-auto px-6 py-24 overflow-hidden" id="how-it-works">
+        <!-- 🌌 Ambient Particle Background -->
+        <div id="particle-bg" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
-    <!--  -->
-    <section class="bg-[#14163A] max-w-7xl mx-auto px-6 py-20" id="how-it-works">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Get In Touch!</h2>
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
-            <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
+        <h2 class="relative z-10 text-3xl md:text-4xl font-bold text-center mb-16 text-white tracking-wide">
+            HOW IT WORKS!
+        </h2>
+
+        <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- CARD TEMPLATE -->
+            <div
+                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-indigo-400 via-pink-500 to-purple-500 animate-glow">
+                </div>
+                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
+                    01
+                </span>
+                <h3 class="text-2xl font-semibold mb-4 text-indigo-400">
+                    Step 1: Construct
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Create an account to access our platform and start your fragrance journey.
+                </p>
+            </div>
+
+            <div
+                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-pink-400 via-fuchsia-500 to-red-500 animate-glow">
+                </div>
+                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
+                    02
+                </span>
+                <h3 class="text-2xl font-semibold mb-4 text-pink-400">Step 2: Collect</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Easily upload your fragrance samples and details to our secure platform.
+                </p>
+            </div>
+
+            <div
+                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-purple-400 via-blue-500 to-indigo-500 animate-glow">
+                </div>
+                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
+                    03
+                </span>
+                <h3 class="text-2xl font-semibold mb-4 text-purple-400">
+                    Step 3: Capture
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Utilize our AI-powered tools to gain insights and make informed decisions.
+                </p>
+            </div>
+
+            <div
+                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-500 animate-glow">
+                </div>
+                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
+                    04
+                </span>
+                <h3 class="text-2xl font-semibold mb-4 text-cyan-400">Step 4: Reveal</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Discover trends and preferences with our comprehensive analytics dashboard.
+                </p>
+            </div>
+
+            <div
+                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-teal-400 via-green-400 to-lime-400 animate-glow">
+                </div>
+                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
+                    05
+                </span>
+                <h3 class="text-2xl font-semibold mb-4 text-teal-400">Step 5: Report</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Leverage our AI-driven insights to refine your fragrance offerings.
+                </p>
             </div>
         </div>
     </section>
+    <!-- END HOW IT WORKS -->
 
     <!-- WHY VENDII -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why Choose Vendii Global?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Innovative Technology</h3>
-                    <p class="text-gray-300">Our vending machines are equipped with the latest technology to ensure a
-                        seamless user experience.</p>
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-[#0f112f] via-[#14163A] to-[#0f112f]" id="why-vendii">
+        <!-- Ambient Glow Background -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.1),transparent_70%)]">
+            </div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,72,153,0.1),transparent_70%)]">
+            </div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-6">
+            <h2
+                class="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-cyan-300 to-pink-400">
+                Why Choose <span class="text-white">Vendii Global?</span>
+            </h2>
+
+            <div id="why-grid" class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div
+                    class="why-card group relative p-8 rounded-2xl bg-[#1e2140]/70 backdrop-blur-md border border-transparent transition-all duration-700 opacity-0 transform translate-y-10 hover:-translate-y-2 hover:rotate-[1deg]">
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-400 to-cyan-400 opacity-0 group-hover:opacity-20 blur-xl transition duration-700">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-2xl border border-transparent group-hover:border-indigo-400/40 transition duration-500">
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-300">Innovative Technology</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Our vending machines are equipped with the latest technology to ensure a seamless user
+                        experience.
+                    </p>
                 </div>
-                <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Customizable Solutions</h3>
-                    <p class="text-gray-300">We tailor our vending solutions to meet the unique needs of your business
-                        and location.</p>
+
+                <!-- Card 2 -->
+                <div
+                    class="why-card group relative p-8 rounded-2xl bg-[#1e2140]/70 backdrop-blur-md border border-transparent transition-all duration-700 opacity-0 transform translate-y-10 hover:-translate-y-2 hover:rotate-[1deg]">
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 opacity-0 group-hover:opacity-20 blur-xl transition duration-700">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-2xl border border-transparent group-hover:border-pink-400/40 transition duration-500">
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 text-pink-300">Customizable Solutions</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        We tailor our vending solutions to meet the unique needs of your business and location.
+                    </p>
                 </div>
-                <div class="bg-[#1e2140] p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Exceptional Support</h3>
-                    <p class="text-gray-300">Our dedicated support team is always ready to assist you with any questions
-                        or issues.</p>
+
+                <!-- Card 3 -->
+                <div
+                    class="why-card group relative p-8 rounded-2xl bg-[#1e2140]/70 backdrop-blur-md border border-transparent transition-all duration-700 opacity-0 transform translate-y-10 hover:-translate-y-2 hover:rotate-[1deg]">
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 to-indigo-400 opacity-0 group-hover:opacity-20 blur-xl transition duration-700">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-2xl border border-transparent group-hover:border-cyan-400/40 transition duration-500">
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-300">Exceptional Support</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Our dedicated support team is always ready to assist you with any questions or issues.
+                    </p>
                 </div>
             </div>
         </div>
