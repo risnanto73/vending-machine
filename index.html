@@ -735,226 +735,417 @@
     </section>
     <!-- END ABOUT US -->
 
-    <!-- HOW IT WORKS -->
+    <!-- HOW IT WORKS TABS -->
     <section class="relative bg-[#14163A] mx-auto px-6 py-24 overflow-hidden" id="how-it-works">
         <!-- 🌌 Ambient Particle Background -->
         <div id="particle-bg" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
+
+        <!-- ✨ TITLE -->
         <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16 opacity-0 translate-y-6 transition-all duration-700"
             data-reveal>
-            HOW IT <span class="text-blue-400">WORK</span>
+            HOW IT <span class="text-blue-400">WORKS</span>
         </h2>
 
-        <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-            <!-- CARD TEMPLATE -->
-            <div
-                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <div
-                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-indigo-400 via-pink-500 to-purple-500 animate-glow">
-                </div>
-                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
-                    01
-                </span>
-                <h3 class="text-2xl font-semibold mb-4 text-indigo-400">
-                    Step 1: Construct
-                </h3>
-                <p class="text-gray-300 leading-relaxed">
-                    Create an account to access our platform and start your fragrance journey.
-                </p>
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
+            <!-- 🎬 LEFT GIF AREA -->
+            <div class="md:w-1/2 flex justify-center relative">
+                <img id="tab-gif"
+                    src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWlxa2hhcWd6NTUydjJybmtnaWRnMWJibDFxN3V6YjZwbmxrMWp2aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Y01jP9xvZXW0p7MAjO/giphy.gif"
+                    alt="Step Illustration"
+                    class="w-[400px] h-[400px] object-contain rounded-2xl shadow-2xl animate-fade" />
             </div>
 
-            <div
-                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <div
-                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-pink-400 via-fuchsia-500 to-red-500 animate-glow">
+            <!-- 📋 RIGHT TABS -->
+            <div class="md:w-1/2 text-white">
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <button class="tab-btn px-4 py-2 rounded-full bg-blue-500/30 hover:bg-blue-500/50 transition active"
+                        data-index="0">
+                        Construct <span class="text-lg">⚙️</span>
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-full bg-pink-500/30 hover:bg-pink-500/50 transition"
+                        data-index="1">
+                        Collect <span class="text-lg">📦</span>
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-full bg-purple-500/30 hover:bg-purple-500/50 transition"
+                        data-index="2">
+                        Capture <span class="text-lg">🤖</span>
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-full bg-yellow-500/30 hover:bg-purple-500/50 transition"
+                        data-index="3">
+                        Reveal <span class="text-lg">📈</span>
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded-full bg-green-500/30 hover:bg-purple-500/50 transition"
+                        data-index="4">
+                        Report <span class="text-lg">📊</span>
+                    </button>
                 </div>
-                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
-                    02
-                </span>
-                <h3 class="text-2xl font-semibold mb-4 text-pink-400">Step 2: Collect</h3>
-                <p class="text-gray-300 leading-relaxed">
-                    Easily upload your fragrance samples and details to our secure platform.
-                </p>
-            </div>
 
-            <div
-                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <div
-                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-purple-400 via-blue-500 to-indigo-500 animate-glow">
+                <!-- TAB CONTENTS -->
+                <div id="tab-content" class="space-y-4">
+                    <h3
+                        class="tab-title text-2xl font-semibold text-indigo-400 opacity-0 translate-y-4 transition-all duration-700">
+                        Step 1: Construct
+                    </h3>
+                    <p
+                        class="tab-subtitle text-gray-300 leading-relaxed opacity-0 translate-y-4 transition-all duration-700 delay-150">
+                        Create an account to access our platform and start your journey.
+                    </p>
                 </div>
-                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
-                    03
-                </span>
-                <h3 class="text-2xl font-semibold mb-4 text-purple-400">
-                    Step 3: Capture
-                </h3>
-                <p class="text-gray-300 leading-relaxed">
-                    Utilize our AI-powered tools to gain insights and make informed decisions.
-                </p>
-            </div>
-
-            <div
-                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <div
-                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-500 animate-glow">
-                </div>
-                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
-                    04
-                </span>
-                <h3 class="text-2xl font-semibold mb-4 text-cyan-400">Step 4: Reveal</h3>
-                <p class="text-gray-300 leading-relaxed">
-                    Discover trends and preferences with our comprehensive analytics dashboard.
-                </p>
-            </div>
-
-            <div
-                class="reveal relative bg-[#1e2140] p-8 rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                <div
-                    class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-teal-400 via-green-400 to-lime-400 animate-glow">
-                </div>
-                <span class="absolute text-7xl font-extrabold text-white/10 top-4 right-6 select-none">
-                    05
-                </span>
-                <h3 class="text-2xl font-semibold mb-4 text-teal-400">Step 5: Report</h3>
-                <p class="text-gray-300 leading-relaxed">
-                    Leverage our AI-driven insights to refine your fragrance offerings.
-                </p>
             </div>
         </div>
+
+        <!-- 🌠 PARALLAX SCRIPT -->
+        <script>
+            // Data untuk tiap tab
+            const tabs = [
+                {
+                    title: "Step 1: Construct",
+                    subtitle:
+                        "We design the right panel with you — defining size and demographics (age, gender, geography, and more) to ensure results reflect your target market. Every panel is built from targeted, engaged consumers who represent your audience profile.",
+                    gif: "/image/mental-health.gif",
+                },
+                {
+                    title: "Step 2: Collect",
+                    subtitle:
+                        "Unreleased fragrance samples (including a benchmark) are shipped directly to participants, ensuring consistent and controlled testing conditions.",
+                    gif: "/image/delivery.gif",
+                },
+                {
+                    title: "Step 3: Capture",
+                    subtitle:
+                        "Participants share their impressions through a seamless digital experience — ratings, preferences, perceptions, and purchase intent — giving you structured, unbiased feedback at scale.",
+                    gif: "/image/feedback.gif",
+                },
+                {
+                    title: "Step 4: Capture",
+                    subtitle:
+                        "Responses are rigorously cleaned, structured, and quality-checked, then enriched with AI-driven analysis and data science to uncover strengths, weaknesses, and patterns in consumer response.",
+                    gif: "/image/data-scient.gif",
+                },
+                {
+                    title: "Step 5: Capture",
+                    subtitle:
+                        "We deliver polished, insight-rich reports that distil results into clear comparisons and actionable guidance — giving your team the evidence it needs to move forward with confidence.",
+                    gif: "/image/chart.gif",
+                },
+            ];
+
+            const tabBtns = document.querySelectorAll(".tab-btn");
+            const tabTitle = document.querySelector(".tab-title");
+            const tabSubtitle = document.querySelector(".tab-subtitle");
+            const tabGif = document.getElementById("tab-gif");
+            let currentIndex = 0;
+            let interval;
+
+            function updateTab(index) {
+                tabBtns.forEach((btn, i) =>
+                    btn.classList.toggle("active", i === index)
+                );
+
+                // Reset animasi teks (staggered)
+                tabTitle.style.opacity = 0;
+                tabSubtitle.style.opacity = 0;
+                tabTitle.style.transform = "translateY(10px)";
+                tabSubtitle.style.transform = "translateY(10px)";
+
+                setTimeout(() => {
+                    tabTitle.textContent = tabs[index].title;
+                    tabSubtitle.textContent = tabs[index].subtitle;
+                    tabGif.src = tabs[index].gif;
+
+                    tabTitle.style.transitionDelay = "0s";
+                    tabSubtitle.style.transitionDelay = "0.15s";
+
+                    setTimeout(() => {
+                        tabTitle.style.opacity = 1;
+                        tabTitle.style.transform = "translateY(0)";
+                        tabSubtitle.style.opacity = 1;
+                        tabSubtitle.style.transform = "translateY(0)";
+                    }, 50);
+                }, 300);
+            }
+
+            tabBtns.forEach((btn, i) => {
+                btn.addEventListener("click", () => {
+                    currentIndex = i;
+                    updateTab(i);
+                    clearInterval(interval);
+                    autoPlay();
+                });
+            });
+
+            // Auto play every 8s
+            function autoPlay() {
+                interval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % tabs.length;
+                    updateTab(currentIndex);
+                }, 5000);
+            }
+
+            updateTab(0);
+            autoPlay();
+
+            // Parallax effect
+            document.addEventListener("mousemove", (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 10;
+                const y = (e.clientY / window.innerHeight - 0.5) * 10;
+                document.getElementById(
+                    "particle-bg"
+                ).style.transform = `translate(${x}px, ${y}px)`;
+            });
+        </script>
+
+        <!-- 🌌 Simple Particle Background -->
+        <script>
+            const particleContainer = document.getElementById("particle-bg");
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement("div");
+                particle.className =
+                    "absolute w-1 h-1 bg-white/30 rounded-full animate-pulse";
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${2 + Math.random() * 3}s`;
+                particleContainer.appendChild(particle);
+            }
+        </script>
+
+        <style>
+            .tab-btn.active {
+                background-color: rgba(59, 130, 246, 0.8);
+            }
+
+            .animate-fade {
+                animation: fadeIn 0.8s ease;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.95);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        </style>
     </section>
-    <!-- END HOW IT WORKS -->
+    <!-- END HOW IT WORKS TABS -->
 
-    <!-- TAB -->
-  
-    <!-- END TABS -->
+    <!-- WHY VENDII ? -->
+    <section class="relative py-24 overflow-hidden bg-gradient-to-b from-[#0f112f] via-[#14163A] to-[#0f112f]">
+        <!-- Ambient Glow Background -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.1),transparent_70%)]">
+            </div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,72,153,0.1),transparent_70%)]">
+            </div>
+        </div>
 
-    <!-- WHY VENDII -->
-    <section class="bg-[#0F103F] text-white py-20 px-6" id="how-it-works">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- TITLE -->
-            <h2 class="text-center text-3xl md:text-4xl font-bold mb-12 tracking-wide">
-                HOW IT <span class="text-blue-400">WORKS</span>
+        <div class="relative max-w-7xl mx-auto px-6">
+            <h2
+                class="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-cyan-300 to-pink-400">
+                Why Choose <span class="text-white">Vendii Global?</span>
             </h2>
 
-            <!-- TAB NAV -->
-            <div class="flex justify-center mb-10 space-x-6">
-                <button class="tab-btn border-b-2 border-blue-400 text-blue-400 pb-2 text-sm uppercase tracking-widest"
-                    data-tab="tab1">Step One</button>
-                <button
-                    class="tab-btn border-b-2 border-transparent text-gray-400 pb-2 text-sm uppercase tracking-widest hover:text-blue-300"
-                    data-tab="tab2">Step Two</button>
-                <button
-                    class="tab-btn border-b-2 border-transparent text-gray-400 pb-2 text-sm uppercase tracking-widest hover:text-blue-300"
-                    data-tab="tab3">Step Three</button>
-            </div>
+            <div id="why-grid" class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div
+                    class="why-card group relative p-8 rounded-2xl bg-[#1e2140]/70 backdrop-blur-md border border-transparent transition-all duration-700 opacity-0 transform translate-y-10 hover:-translate-y-2 hover:rotate-[1deg]">
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-400 to-cyan-400 opacity-0 group-hover:opacity-20 blur-xl transition duration-700">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-2xl border border-transparent group-hover:border-indigo-400/40 transition duration-500">
+                    </div>
 
-            <!-- TAB CONTENT -->
-            <div id="tab-contents" class="mt-8">
-                <!-- STEP 1 -->
-                <div id="tab1" class="tab-content grid md:grid-cols-2 gap-12 items-center animate-fadeIn">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4 text-blue-300">Step One</h3>
-                        <p class="text-gray-300 leading-relaxed">
-                            The scent seeker selects the type of fragrance they’re searching for, setting the foundation
-                            for a personalized experience.
-                        </p>
-                    </div>
-                    <div class="flex justify-center">
-                        <img src="/assets/images/how-step1.png" alt="Step 1"
-                            class="max-w-sm w-full rounded-lg shadow-lg object-contain">
-                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-300">Innovative Technology</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Our vending machines are equipped with the latest technology to ensure a seamless user
+                        experience.
+                    </p>
                 </div>
 
-                <!-- STEP 2 -->
-                <div id="tab2" class="tab-content hidden grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4 text-pink-300">Step Two</h3>
-                        <p class="text-gray-300 leading-relaxed">
-                            Our system analyzes preferences and selects an ideal fragrance combination for each user.
-                        </p>
+                <!-- Card 2 -->
+                <div
+                    class="why-card group relative p-8 rounded-2xl bg-[#1e2140]/70 backdrop-blur-md border border-transparent transition-all duration-700 opacity-0 transform translate-y-10 hover:-translate-y-2 hover:rotate-[1deg]">
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 opacity-0 group-hover:opacity-20 blur-xl transition duration-700">
                     </div>
-                    <div class="flex justify-center">
-                        <img src="/assets/images/how-step2.png" alt="Step 2"
-                            class="max-w-sm w-full rounded-lg shadow-lg object-contain">
+                    <div
+                        class="absolute inset-0 rounded-2xl border border-transparent group-hover:border-pink-400/40 transition duration-500">
                     </div>
+
+                    <h3 class="text-xl font-semibold mb-4 text-pink-300">Customizable Solutions</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        We tailor our vending solutions to meet the unique needs of your business and location.
+                    </p>
                 </div>
 
-                <!-- STEP 3 -->
-                <div id="tab3" class="tab-content hidden grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4 text-purple-300">Step Three</h3>
-                        <p class="text-gray-300 leading-relaxed">
-                            The user receives a final overview of the fragrance — a perfect blend crafted for their
-                            taste.
-                        </p>
+                <!-- Card 3 -->
+                <div
+                    class="why-card group relative p-8 rounded-2xl bg-[#1e2140]/70 backdrop-blur-md border border-transparent transition-all duration-700 opacity-0 transform translate-y-10 hover:-translate-y-2 hover:rotate-[1deg]">
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 to-indigo-400 opacity-0 group-hover:opacity-20 blur-xl transition duration-700">
                     </div>
-                    <div class="flex justify-center">
-                        <img src="/assets/images/how-step3.png" alt="Step 3"
-                            class="max-w-sm w-full rounded-lg shadow-lg object-contain">
+                    <div
+                        class="absolute inset-0 rounded-2xl border border-transparent group-hover:border-cyan-400/40 transition duration-500">
                     </div>
+
+                    <h3 class="text-xl font-semibold mb-4 text-cyan-300">Exceptional Support</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Our dedicated support team is always ready to assist you with any questions or issues.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
+    <!--END WHY VENDII ? -->
 
     <!-- CONTACT -->
-    <section id="contact" class="relative bg-gradient-to-r from-[#14163A] to-[#2a2d61] px-6 py-24 overflow-hidden">
-        <!-- Background Particles -->
+    <section id="contact" class="relative bg-gradient-to-r from-[#14163A] to-[#2a2d61] px-24 py-24 overflow-hidden">
+        <!-- 🌌 Background Particles -->
         <div id="contact-particle-bg" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
-        <!-- Header Centered -->
-        <div class="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Get in <span class="text-blue-400">Touch</span>
+        <!-- 🧭 Header -->
+        <div class="relative z-10 flex flex-col items-center text-center mx-auto mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                Get in <span class="text-blue-400">Touch</span>
             </h2>
-            <p class="text-gray-300 text-lg">Interested in learning more about how Vendii can transform your fragrance
-                evaluation process? Reach out to us today!</p>
+            <p class="text-gray-300 text-lg">
+                Interested in learning more about how Vendii can transform your fragrance evaluation process?
+                Reach out to us today!
+            </p>
         </div>
 
-        <!-- Grid 2 Kolom -->
-        <div class="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-            <!-- Kiri: Formulir -->
+        <!-- 🧩 Grid 2 Kolom -->
+        <div class="relative z-10 mx-auto grid md:grid-cols-2 gap-12 items-start">
+            <!-- ✍️ Formulir -->
             <div class="space-y-6 md:space-y-8">
                 <form class="space-y-6">
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-200 mb-1">Email</label>
-                        <input id="email" name="email" type="email" required
+                        <input id="email" name="email" type="email" required placeholder="you@example.com"
                             class="w-full px-4 py-3 rounded-lg bg-[#1e2140] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
                     </div>
+
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-200 mb-1">First Name</label>
-                        <input id="name" name="name" type="text"
+                        <label for="first-name" class="block text-sm font-medium text-gray-200 mb-1">First Name</label>
+                        <input id="first-name" name="first_name" type="text" placeholder="John"
                             class="w-full px-4 py-3 rounded-lg bg-[#1e2140] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
                     </div>
+
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-200 mb-1">Last Name</label>
-                        <input id="name" name="name" type="text"
+                        <label for="last-name" class="block text-sm font-medium text-gray-200 mb-1">Last Name</label>
+                        <input id="last-name" name="last_name" type="text" placeholder="Doe"
                             class="w-full px-4 py-3 rounded-lg bg-[#1e2140] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
                     </div>
+
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-200 mb-1">Company Name</label>
-                        <input id="name" name="name" type="text"
+                        <label for="company" class="block text-sm font-medium text-gray-200 mb-1">Company Name</label>
+                        <input id="company" name="company" type="text" placeholder="Vendii Labs"
                             class="w-full px-4 py-3 rounded-lg bg-[#1e2140] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
                     </div>
 
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-200 mb-1">Message</label>
-                        <textarea id="message" name="message" rows="4"
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us how we can help..."
                             class="w-full px-4 py-3 rounded-lg bg-[#1e2140] border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"></textarea>
                     </div>
+
                     <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition transform hover:scale-105 duration-300 relative overflow-hidden"
+                        class="relative bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition transform hover:scale-105 duration-300 overflow-hidden"
                         onclick="showRippleEffect(event)">
                         Send Message
                     </button>
                 </form>
             </div>
 
-            <div class="space-y-10 p-6 flex items-center justify-center">
-
+            <!-- 📞 Kanan: Info Kontak / Ilustrasi -->
+            <div class="space-y-10 p-6 flex flex-col items-center justify-center text-center text-gray-300">
+                <!-- hilangkan image layar mobile -->
+                <div class="relative w-full max-w-md hidden md:block">
+                    <img src="/image/inbox.png"
+                        alt="Contact Illustration"
+                        class="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-700 ease-out" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#14163A]/60 via-transparent to-transparent rounded-2xl pointer-events-none">
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold text-white mb-2">We’d love to hear from you!</h3>
+                    <p class="text-gray-400 max-w-sm mx-auto">
+                        Whether you have questions, feedback, or partnership ideas — our team is always ready to
+                        connect.
+                    </p>
+                </div>
             </div>
         </div>
+
+        <!-- ✨ Animasi JS -->
+        <script>
+            // Ripple Effect Button
+            function showRippleEffect(e) {
+                const btn = e.currentTarget;
+                const ripple = document.createElement("span");
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add("ripple");
+
+                btn.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            }
+
+            // Parallax Lembut
+            document.addEventListener("mousemove", (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 10;
+                const y = (e.clientY / window.innerHeight - 0.5) * 10;
+                document.getElementById("contact-particle-bg").style.transform = `translate(${x}px, ${y}px)`;
+            });
+
+            // Partikel Cahaya
+            const container = document.getElementById("contact-particle-bg");
+            for (let i = 0; i < 40; i++) {
+                const dot = document.createElement("div");
+                dot.className = "absolute w-1 h-1 bg-white/30 rounded-full animate-pulse";
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.top = `${Math.random() * 100}%`;
+                dot.style.animationDuration = `${2 + Math.random() * 3}s`;
+                container.appendChild(dot);
+            }
+        </script>
+
+        <!-- 💧 Style Tambahan -->
+        <style>
+            .ripple {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                background: rgba(255, 255, 255, 0.4);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            }
+
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        </style>
     </section>
+
+
     <!-- END CONTACT -->
 
     <!-- FOOTER -->
@@ -962,7 +1153,7 @@
         &copy; 2024 Vendii Global. All rights reserved.
     </footer>
     <!-- SCRIPT -->
-    <script type="module" src="/script/main.js"></script>
+    <script type="module" src="script/main.js"></script>
 </body>
 
 </html>
