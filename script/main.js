@@ -142,44 +142,7 @@ const observer = new IntersectionObserver(
 aboutCards.forEach((card) => observer.observe(card));
 
 // ================== HOW IT WORKS ==================
-// 🌟 FADE + STAGGER REVEAL
-const reveals = document.querySelectorAll(".reveal");
-function revealOnScroll() {
-  const triggerBottom = window.innerHeight * 0.85;
-  reveals.forEach((el, i) => {
-    const top = el.getBoundingClientRect().top;
-    if (top < triggerBottom && !el.classList.contains("active")) {
-      const row = Math.floor(i / 3);
-      const col = i % 3;
-      const delay = row * 400 + col * 200;
-      setTimeout(() => {
-        el.classList.add("active");
-      }, delay);
-    }
-  });
-}
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
 
-// 🌌 PARTICLE BACKGROUND GENERATOR
-const particleContainer = document.getElementById("particle-bg");
-const particleCount = 40; // jumlah partikel
-
-for (let i = 0; i < particleCount; i++) {
-  const p = document.createElement("div");
-  p.classList.add("particle");
-  const size = Math.random() * 6 + 2;
-  const x = Math.random() * 100;
-  const y = Math.random() * 100;
-  const duration = Math.random() * 5 + 5;
-
-  p.style.width = `${size}px`;
-  p.style.height = `${size}px`;
-  p.style.left = `${x}%`;
-  p.style.top = `${y}%`;
-  p.style.animationDuration = `${duration}s`;
-  particleContainer.appendChild(p);
-}
 
 // ================== WHY CHOOSE VENDI GLOBAL ==================
 
