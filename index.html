@@ -437,7 +437,6 @@
     <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-[85%]">
         <div class="bg-[#14163A]/90 backdrop-blur-md rounded-2xl shadow-lg flex items-center justify-between px-6 py-4">
             <!-- Logo -->
-            <!-- <div class="text-2xl font-semibold">Vendii Global</div> -->
             <div class="flex items-center">
                 <a href="#">
                     <img src="/image/vendii_logo.png" alt="Vendii Global Logo" class="h-11 w-h-11 object-contain" />
@@ -445,22 +444,22 @@
             </div>
 
             <!-- Desktop Menu -->
-            <ul class="hidden lg:flex items-center space-x-8">
+            <ul id="navbar-menu" class="hidden lg:flex items-center space-x-8">
                 <li>
                     <a href="#about-us"
-                        class="relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-100 after:origin-left text-blue-400 font-medium transition-all">
+                        class="nav-link relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left transition-all duration-300">
                         ABOUT US
                     </a>
                 </li>
                 <li>
                     <a href="#how-it-works"
-                        class="relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left transition-all duration-300">
+                        class="nav-link relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left transition-all duration-300">
                         HOW IT WORKS
                     </a>
                 </li>
                 <li>
                     <a href="#why-vendii"
-                        class="relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left transition-all duration-300">
+                        class="nav-link relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left transition-all duration-300">
                         WHY VENDII
                     </a>
                 </li>
@@ -471,7 +470,8 @@
                 class="hidden lg:inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition shake-slow">
                 GET IN TOUCH
             </a>
-            <!-- Mobile/Tablet Menu Button -->
+
+            <!-- Mobile Menu Button -->
             <button id="menu-toggle" class="lg:hidden text-white focus:outline-none">
                 <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                     stroke="currentColor" class="w-7 h-7">
@@ -487,15 +487,65 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu"
             class="hidden lg:hidden bg-[#14163A]/95 backdrop-blur-md mt-2 rounded-2xl shadow-lg p-6 space-y-4 text-center">
-            <a href="#" class="block text-blue-400 font-medium">ABOUT US</a>
-            <a href="#how-it-works" class="block hover:text-blue-400 transition">HOW IT WORKS</a>
-            <a href="#" class="block hover:text-blue-400 transition">WHY VENDII</a>
+            <a href="#about-us" class="mobile-link block hover:text-blue-400 transition">ABOUT US</a>
+            <a href="#how-it-works" class="mobile-link block hover:text-blue-400 transition">HOW IT WORKS</a>
+            <a href="#why-vendii" class="mobile-link block hover:text-blue-400 transition">WHY VENDII</a>
             <a href="#trust-vendii"
                 class="block bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition w-full">
                 GET IN TOUCH
             </a>
         </div>
     </nav>
+
+    <script>
+        // === Navbar Highlight ===
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.forEach(l => l.classList.remove("text-blue-400", "after:scale-x-100"));
+                this.classList.add("text-blue-400");
+                this.classList.add("after:scale-x-100");
+            });
+        });
+
+        // === Mobile Menu Toggle ===
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuIcon = document.getElementById("menu-icon");
+        const closeIcon = document.getElementById("close-icon");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            menuIcon.classList.toggle("hidden");
+            closeIcon.classList.toggle("hidden");
+        });
+
+        // Tutup menu setelah klik di mobile
+        document.querySelectorAll(".mobile-link").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                menuIcon.classList.remove("hidden");
+                closeIcon.classList.add("hidden");
+            });
+        });
+
+        // === Scroll Spy (optional) ===
+        const sections = document.querySelectorAll("section[id]");
+        window.addEventListener("scroll", () => {
+            let scrollY = window.scrollY + 100;
+            sections.forEach(section => {
+                const id = section.getAttribute("id");
+                const navItem = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (navItem) {
+                    if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
+                        navLinks.forEach(l => l.classList.remove("text-blue-400", "after:scale-x-100"));
+                        navItem.classList.add("text-blue-400", "after:scale-x-100");
+                    }
+                }
+            });
+        });
+    </script>
+
 
     <!-- HERO SECTION -->
     <section
