@@ -471,12 +471,17 @@
                 GET IN TOUCH
             </a>
 
-            <!-- Mobile Menu Button -->
-            <button id="menu-toggle" class="lg:hidden text-white focus:outline-none">
+            <!-- Mobile Menu Button (Accessibility Fixed) -->
+            <button id="menu-toggle" class="lg:hidden text-white focus:outline-none" aria-label="Toggle navigation menu"
+                aria-expanded="false" aria-controls="mobile-menu">
+
+                <!-- Ikon Hamburger -->
                 <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                     stroke="currentColor" class="w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
+
+                <!-- Ikon Close -->
                 <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                     stroke="currentColor" class="w-7 h-7 hidden">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -497,27 +502,36 @@
         </div>
     </nav>
 
+
     <script>
         // === Navbar Highlight ===
         const navLinks = document.querySelectorAll(".nav-link");
         navLinks.forEach(link => {
             link.addEventListener("click", function () {
                 navLinks.forEach(l => l.classList.remove("text-blue-400", "after:scale-x-100"));
-                this.classList.add("text-blue-400");
-                this.classList.add("after:scale-x-100");
+                this.classList.add("text-blue-400", "after:scale-x-100");
             });
         });
 
-        // === Mobile Menu Toggle ===
+        // === Mobile Menu Toggle (Accessibility Improved) ===
         const menuToggle = document.getElementById("menu-toggle");
         const menuIcon = document.getElementById("menu-icon");
         const closeIcon = document.getElementById("close-icon");
         const mobileMenu = document.getElementById("mobile-menu");
 
         menuToggle.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
+            // Toggle visibility
+            const isHidden = mobileMenu.classList.toggle("hidden");
             menuIcon.classList.toggle("hidden");
             closeIcon.classList.toggle("hidden");
+
+            // Accessibility attributes
+            menuToggle.setAttribute("aria-expanded", !isHidden);
+            if (isHidden) {
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+            } else {
+                menuToggle.setAttribute("aria-label", "Close navigation menu");
+            }
         });
 
         // Tutup menu setelah klik di mobile
@@ -526,6 +540,8 @@
                 mobileMenu.classList.add("hidden");
                 menuIcon.classList.remove("hidden");
                 closeIcon.classList.add("hidden");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
             });
         });
 
@@ -545,7 +561,6 @@
             });
         });
     </script>
-
 
     <!-- HERO SECTION -->
     <section
